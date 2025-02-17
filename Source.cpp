@@ -2197,7 +2197,36 @@ void Accounts_Office::Display_all_unpaid_PG()
 //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-
+int get_Valid_Input(int val)
+{
+	if(val == 2){
+		int User_Input = 1;
+		cout << "Choice: ";
+		do
+		{
+			if (User_Input != 1 && User_Input != 2)
+			{
+				cout << "Wrong Choice! Please Enter a valid Value: ";
+			}
+			cin >> User_Input;
+	
+		} while (User_Input != 1 && User_Input != 2);
+		return User_Input;
+	}
+	else if(val == 3){
+		int Choice_Input = 0;
+		cout << "Choice: ";
+		do
+		{
+			if (Choice_Input != 0 && Choice_Input != 1 && Choice_Input != 2)
+			{
+				cout << "Wrong Choice! Kindly Enter Again: ";
+			}
+			cin >> Choice_Input;
+		} while (Choice_Input != 0 && Choice_Input != 1 && Choice_Input != 2);	
+		return Choice_Input;	
+	}
+}
 
 
 
@@ -2260,21 +2289,13 @@ START:
 		{
 
 
-			int User_Input = 1;
+			
 			cout << "\n~~> .::Press 1 to login as Under-Graduate Student!\n~~> .::Press 2 to Login as Post-graduate Student!" << endl;
 
 			string Password = "1234";
-			cout << "Choice: ";
-			do
-			{
-				if (User_Input != 1 && User_Input != 2)
-				{
-					cout << "Wrong Choice! Please Enter a valid Value: ";
-				}
-				cin >> User_Input;
-
-			} while (User_Input != 1 && User_Input != 2);
-
+			
+			int User_Input = get_Valid_Input(2);
+			
 			cout << "Enter 4 Digit Password: " << endl;
 			do
 			{
@@ -2294,16 +2315,8 @@ START:
 					{
 
 						cout << "\nChose your Department: \nPress 0 for CS\nPress 1 for EE\nPress 2 for BBA" << endl;
-						int Choice_Input = 0;
-						cout << "Choice: ";
-						do
-						{
-							if (Choice_Input != 0 && Choice_Input != 1 && Choice_Input != 2)
-							{
-								cout << "Wrong Choice! Kindly Enter Again: ";
-							}
-							cin >> Choice_Input;
-						} while (Choice_Input != 0 && Choice_Input != 1 && Choice_Input != 2);
+						int Choice_Input = get_Valid_Input(3);
+						
 						if (Choice_Input == 0)
 						{
 							UG_Section_1.Set_Department_Name(CS);
@@ -2330,18 +2343,7 @@ START:
 
 
 						cout << "\n\n~~> .::Press 1 to view your Data! \n~~> .::Press 2 to View your Batch Data!" << endl;
-						int data_Input = 1;
-						do
-						{
-							if (data_Input != 1 && data_Input != 2)
-							{
-								cout << "Please Enter a valid Value (1/2): " << endl;
-							}
-							else
-							{
-								cin >> data_Input;
-							}
-						} while (data_Input != 1 && data_Input != 2);
+						int data_Input = get_Valid_Input(2);
 						if (data_Input == 1)
 						{
 							UG_Section_1.Disp_Single_Student(Enrollment_Number);
@@ -2358,16 +2360,7 @@ START:
 						cout << "\nChose your Department: \n~~> .::Press 0 for MBA\n~~> .::Press 1 for MA\n~~> .::Press 2 for MSc" << endl;
 
 
-						int Choice_Input = 0;
-						cout << "Choice: ";
-						do
-						{
-							if (Choice_Input != 0 && Choice_Input != 1 && Choice_Input != 2)
-							{
-								cout << "Invalid Choice! Please select 1/2/3: ";
-							}
-							cin >> Choice_Input;
-						} while (Choice_Input != 0 && Choice_Input != 1 && Choice_Input != 2);
+						int Choice_Input = get_Valid_Input(3);
 
 
 						if (Choice_Input == 0)
@@ -2396,15 +2389,8 @@ START:
 
 
 						cout << "\n\nPress 1 to view your Data! \nPress 2 view your Batch's Data! " << endl;
-						int data_Input = 1;
-						do
-						{
-							if (data_Input != 1 && data_Input != 2)
-							{
-								cout << "Please Enter a valid Value: " << endl;
-							}
-							cin >> data_Input;
-						} while (data_Input != 1 && data_Input != 2);
+						int data_Input = get_Valid_Input(2);
+
 						if (data_Input == 1)
 						{
 							PG_section_1.Disp_Single_PG_Student(Enrollment_Number);
@@ -2479,15 +2465,7 @@ START:
 
 
 					cout << "\n\nPress 1 to see Your Department's Data! \nPress 2 to see a student's data: ";
-					int choice = 1;
-					do
-					{
-						if (choice != 1 && choice != 2)
-						{
-							cout << "Please Enter a valid Value: " << endl;
-						}
-						cin >> choice;
-					} while (choice != 1 && choice != 2);
+					int choice = get_Valid_Input(2);
 					if (choice == 1)
 					{
 						if (Choice_Input < 3)
@@ -2526,14 +2504,7 @@ START:
 							} while (Enrollment_Number > 30 || Enrollment_Number < 0);
 						}
 						cout << "\n\n~~> .::Press 1 to change this student's GPA!\n~~> .::Press 2 to Skip!" << endl;
-						do
-						{
-							if (choice != 1 && choice != 2)
-							{
-								cout << "Please Enter a valid Value: " << endl;
-							}
-							cin >> choice;
-						} while (choice != 1 && choice != 2);
+						choice = get_Valid_Input(2);
 
 
 						if (choice == 1)
@@ -2558,15 +2529,7 @@ START:
 
 					}
 					cout << "\n\n\n~~>Press 1 to go back to Main menu!\n~~>Press 2 to Exit!" << endl;
-					choice = 1;
-					do
-					{
-						if (choice != 1 && choice != 2)
-						{
-							cout << "Please Enter a valid Value: " << endl;
-						}
-						cin >> choice;
-					} while (choice != 1 && choice != 2);
+					choice = get_Valid_Input(2);
 					if (choice == 1)
 					{
 						goto START;
@@ -2682,15 +2645,7 @@ START:
 						t1.Display_Teacher();
 					}
 					cout << "\n\n\nPress 1 to go back to Main menu!\n Press 2 to Exit! " << endl;
-					choice = 1;
-					do
-					{
-						if (choice != 1 && choice != 2)
-						{
-							cout << "Please Enter a valid Value: " << endl;
-						}
-						cin >> choice;
-					} while (choice != 1 && choice != 2);
+					choice = get_Valid_Input(2);
 					if (choice == 1)
 					{
 						goto START;
@@ -2765,16 +2720,8 @@ START:
 						Acc1.Display_all_unpaid_UG();
 
 						cout << "\n\nPress 1 to Delete all Unpaid Under-Graduate student's Data!\nPress 2 to delete Specific students Data!\nPress 3 to Skip!" << endl;
-						do
-						{
-							if (choice != 1 && choice != 2 && choice != 3)
-							{
-								cout << "Please Enter a valid Value: " << endl;
-							}
-
-							cin >> choice;
-						} while (choice != 1 && choice != 2 && choice != 3);
-						if (choice == 1)
+						choice = get_Valid_Input(3);
+						if (choice == 0)
 						{
 							cout << "LIST OF UG STUDENTS: " << endl;
 							UG_Section_1.Display_UG();
@@ -2783,7 +2730,7 @@ START:
 							UG_Section_1.Display_UG();
 
 						}
-						else if (choice == 2)
+						else if (choice == 1)
 						{
 							cout << "LIST OF UG STUDENTS: " << endl;
 							UG_Section_1.Display_UG();
@@ -2817,16 +2764,9 @@ START:
 						Acc1.Display_all_unpaid_PG();
 
 						cout << "~~> .::Press 1 to Delete all Unpaid Post-Graduate student's Data\n~~> .::Press 2 to delete Specific students Data\n\n~~> .::Press 3 to Skip" << endl;
-						do
-						{
-							if (choice != 1 && choice != 2 && choice != 3)
-							{
-								cout << "Please Enter a valid Value: " << endl;
-							}
-							cin >> choice;
-						} while (choice != 1 && choice != 2 && choice != 3);
+						choice = get_Valid_Input(3);
 
-						if (choice == 1)
+						if (choice == 0)
 						{
 							cout << "LIST OF ALL PG STUDENTS: " << endl;
 							PG_section_1.Display_PG();
@@ -2834,7 +2774,7 @@ START:
 							cout << "\n\nUPDATED LIST OF UG STUDENTS After Removing All Unpaid Students: " << endl;
 							PG_section_1.Display_PG();
 						}
-						else if (choice == 2)
+						else if (choice == 1)
 						{
 							cout << "LIST OF ALL PG STUDENTS: " << endl;
 							PG_section_1.Display_PG();
@@ -2873,15 +2813,7 @@ START:
 					else
 					{
 						cout << "\n\n\n\nPress 1 to go back to Main menu\n press 2 to Exit " << endl;
-						choice = 1;
-						do
-						{
-							if (choice != 1 && choice != 2)
-							{
-								cout << "Please Enter a valid Value: " << endl;
-							}
-							cin >> choice;
-						} while (choice != 1 && choice != 2);
+						choice = get_Valid_Input(2);
 						if (choice == 1)
 						{
 							goto START;
