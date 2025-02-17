@@ -2226,6 +2226,24 @@ int get_Valid_Input(int val)
 		} while (Choice_Input != 0 && Choice_Input != 1 && Choice_Input != 2);	
 		return Choice_Input;	
 	}
+	else
+	{
+		return 1;
+	}
+}
+
+int get_Valid_Enroll(int val)
+{
+	int Enrollment_Number = 0;
+	cout << "\nEnter your Enrollemnt Number: ";
+	do
+	{
+		if (Enrollment_Number > val || Enrollment_Number < 0)
+		{
+			cout << "Enrollment Must be between 0-" << val << ": ";
+		}
+		cin >> Enrollment_Number;
+	} while (Enrollment_Number > val || Enrollment_Number < 0);	
 }
 
 
@@ -2330,16 +2348,7 @@ START:
 							UG_Section_1.Set_Department_Name(BBA);
 						}
 
-						Enrollment_Number = 0;
-						cout << "\nEnter your Enrollemnt Number: ";
-						do
-						{
-							if (Enrollment_Number > 50 || Enrollment_Number < 0)
-							{
-								cout << "Enrollment Must be between 0-50: ";
-							}
-							cin >> Enrollment_Number;
-						} while (Enrollment_Number > 50 || Enrollment_Number < 0);
+						Enrollment_Number = get_Valid_Enroll(50);
 
 
 						cout << "\n\n~~> .::Press 1 to view your Data! \n~~> .::Press 2 to View your Batch Data!" << endl;
@@ -2376,16 +2385,7 @@ START:
 							PG_section_1.Set_Department_Name(MSc);
 						}
 
-						Enrollment_Number = 0;
-						cout << "Enter your Enrollemnt Number: ";
-						do
-						{
-							if (Enrollment_Number > 30 || Enrollment_Number < 0)
-							{
-								cout << "Enrollment Must be between 0-30: ";
-							}
-							cin >> Enrollment_Number;
-						} while (Enrollment_Number > 30 || Enrollment_Number < 0);
+						Enrollment_Number = get_Valid_Enroll(30);
 
 
 						cout << "\n\nPress 1 to view your Data! \nPress 2 view your Batch's Data! " << endl;
@@ -2483,25 +2483,11 @@ START:
 						cout << "\nEnter your Enrollemnt Number: ";
 						if (Choice_Input < 3)
 						{
-							do
-							{
-								if (Enrollment_Number > 50 || Enrollment_Number < 0)
-								{
-									cout << "Enrollment Must be between 0-50: ";
-								}
-								cin >> Enrollment_Number;
-							} while (Enrollment_Number > 50 || Enrollment_Number < 0);
+							Enrollment_Number = get_Valid_Enroll(50);
 						}
 						else
 						{
-							do
-							{
-								if (Enrollment_Number > 30 || Enrollment_Number < 0)
-								{
-									cout << "Enrollment Must be between 0-30: ";
-								}
-								cin >> Enrollment_Number;
-							} while (Enrollment_Number > 30 || Enrollment_Number < 0);
+							Enrollment_Number = get_Valid_Enroll(30);
 						}
 						cout << "\n\n~~> .::Press 1 to change this student's GPA!\n~~> .::Press 2 to Skip!" << endl;
 						choice = get_Valid_Input(2);
@@ -2734,16 +2720,7 @@ START:
 						{
 							cout << "LIST OF UG STUDENTS: " << endl;
 							UG_Section_1.Display_UG();
-							Enrollment_Number = 0;
-							cout << "\nEnter your Enrollemnt Number: ";
-							do
-							{
-								if (Enrollment_Number > 50 || Enrollment_Number < 0)
-								{
-									cout << "Enrollment Must be between 0-50: ";
-								}
-								cin >> Enrollment_Number;
-							} while (Enrollment_Number > 50 || Enrollment_Number < 0);
+							Enrollment_Number = get_Valid_Enroll(50);
 
 							Acc1.Del_UG_Students(Enrollment_Number);
 
@@ -2778,16 +2755,7 @@ START:
 						{
 							cout << "LIST OF ALL PG STUDENTS: " << endl;
 							PG_section_1.Display_PG();
-							Enrollment_Number = 0;
-							cout << "\nEnter your Enrollemnt Number: ";
-							do
-							{
-								if (Enrollment_Number > 30 || Enrollment_Number < 0)
-								{
-									cout << "Enrollment Must be between 0-30: ";
-								}
-								cin >> Enrollment_Number;
-							} while (Enrollment_Number > 30 || Enrollment_Number < 0);
+							Enrollment_Number = get_Valid_Enroll(30);
 
 							Acc1.Del_PG_Students(Enrollment_Number);
 
